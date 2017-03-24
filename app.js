@@ -9,12 +9,12 @@ var pdfFiller = require('pdffiller');
     // fs = require('fs'),
     // path = require('path');
 
-app.get('/mockPDF', function (req, res) {
+// app.get('/mockPDF', function (req, res) {
     // var pdfBuffer = new Buffer(pdfObject.EsignResponse.Output, 'base64');
     // var pdfPath = path.join('./test good' + '.pdf');
     // console.log(pdfPath);
     // let pdfFileStream = fs.createReadStream(pdfPath);
-    res.setHeader('Content-Type', 'application/pdf');
+    // res.setHeader('Content-Type', 'application/pdf');
     // var sourcePDF = path.resolve("test/test-template.pdf");
     var testpdf = path.resolve("test/TXTempMembCard.pdf");
     var destinationPDF = path.resolve("test/test.pdf");
@@ -48,11 +48,11 @@ app.get('/mockPDF', function (req, res) {
     pdfFiller.fillForm( testpdf, destinationPDF, membershipCard, function(err) {
         if (err) throw err;
         console.log("In callback (we're done).");
-        var pdfFileStream = fs.createReadStream(destinationPDF);
-        fs.unlink(destinationPDF, function(){
-          res.type("application/pdf");
-          pdfFileStream.pipe(res);
-        });
+        //var pdfFileStream = fs.createReadStream(destinationPDF);
+        // fs.unlink(destinationPDF, function(){
+        //   res.type("application/pdf");
+        //   pdfFileStream.pipe(res);
+        // });
     });
     //var doc = new PDFDocument();
     //doc.pipe(res);
@@ -63,7 +63,7 @@ app.get('/mockPDF', function (req, res) {
     
     //pdfFileStream.pipe(res);
     //res.end(pdfBuffer);
-})
+// })
 
 app.listen(3030, function () {
   console.log('Example app listening on port 3000!')
